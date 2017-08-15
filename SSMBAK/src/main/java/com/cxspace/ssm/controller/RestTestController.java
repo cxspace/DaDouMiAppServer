@@ -1,13 +1,20 @@
 package com.cxspace.ssm.controller;
 
 import com.cxspace.ssm.model.User;
+import com.cxspace.ssm.utils.JSONUPUtil;
+import com.sun.tools.internal.ws.processor.util.DirectoryUtil;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,18 +26,19 @@ import java.util.List;
 
 public class RestTestController {
 
-    @RequestMapping(value = "/user/",method = RequestMethod.GET)
+
+
+    @RequestMapping(value = "/user",method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers(){
 
         List<User> users = new ArrayList<User>();
 
-        users.add(new User("xiaoming","12345"));
-
-        users.add(new User("xiaohua","789012"));
 
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 
     }
+
+
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUser(@PathVariable("id") long id)
@@ -38,16 +46,20 @@ public class RestTestController {
 
         System.out.println(id);
 
-        User user = new User("xiaohei","wert");
+
+        User user = new User();
 
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/", method = RequestMethod.POST)
+
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating User " + user.getName());
+        System.out.println("Creating User " + user.getName() + "with Password :" +user.getPassword());
 
         HttpHeaders headers = new HttpHeaders();
+        headers.setAccessControlAllowOrigin("*");
 
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
@@ -73,7 +85,7 @@ public class RestTestController {
 
     }
 
-    @RequestMapping(value = "/user/",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user",method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteAllUsers(){
 
         System.out.println("Delete All Users!");

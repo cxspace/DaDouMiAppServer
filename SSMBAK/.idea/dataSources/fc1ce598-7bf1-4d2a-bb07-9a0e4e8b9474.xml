@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="da_dou_mi_app@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="da_dou_mi_app">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="data_analyze"/>
+    <schema id="4" parent="1" name="da_dou_mi"/>
+    <schema id="5" parent="1" name="da_dou_mi_ques"/>
+    <schema id="6" parent="1" name="doc_system"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="lesson_sys"/>
+    <schema id="9" parent="1" name="mvn_test"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="my_blog"/>
+    <schema id="12" parent="1" name="ncu_jxcp"/>
+    <schema id="13" parent="1" name="performance_schema"/>
+    <schema id="14" parent="1" name="sys"/>
+    <schema id="15" parent="1" name="temp"/>
+    <schema id="16" parent="1" name="up_vams"/>
+    <table id="17" parent="2" name="t_user"/>
+    <column id="18" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="17" name="name">
+      <Position>2</Position>
+      <Comment>姓名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="20" parent="17" name="phone">
+      <Position>3</Position>
+      <Comment>手机号</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="21" parent="17" name="email">
+      <Position>4</Position>
+      <Comment>邮箱</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="22" parent="17" name="wechat">
+      <Position>5</Position>
+      <Comment>微信号</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="23" parent="17" name="password">
+      <Position>6</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="24" parent="17" name="imgsrc">
+      <Position>7</Position>
+      <Comment>头像链接</Comment>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <key id="25" parent="17" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
