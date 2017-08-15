@@ -43,4 +43,8 @@ public class UserServiceImpl implements UserService {
     public Integer updateUserImgsrc(String imgsrc, String id) {
         return userDao.updateUserImgsrcByUserIdAndImgsrc(imgsrc, id);
     }
+
+    public Integer updateUserName(String name, String id) {
+        return userDao.updateUserNameByUserIdAndName(name,id);
+    }
 }

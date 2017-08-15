@@ -21,4 +21,7 @@ public interface UserDao {
     public Integer updateUserPasswordByIdAndPassword(@Param("password")String password , @Param("id")String id);
 
     public Integer updateUserImgsrcByUserIdAndImgsrc(@Param("imgsrc")String imgsrc , @Param("id")String id);
+
+    public Integer updateUserNameByUserIdAndName(@Param("name")String name , @Param("id")String id);
+
 }

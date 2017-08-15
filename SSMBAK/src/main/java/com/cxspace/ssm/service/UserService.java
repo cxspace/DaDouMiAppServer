@@ -21,5 +21,7 @@ public interface UserService {
 
     public Integer updateUserImgsrc(String imgsrc , String id);
 
+    public Integer updateUserName(String name , String id);
+
 
 }

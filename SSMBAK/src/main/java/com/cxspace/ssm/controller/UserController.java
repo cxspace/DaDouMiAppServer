@@ -171,5 +171,17 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "/update_name",method = RequestMethod.POST)
+    public ResponseEntity<User> updateName(@RequestBody User user , UriComponentsBuilder builder)
+    {
+        HttpHeaders headers = new HttpHeaders();
+
+        User returnUser = new User();
+
+        userService.updateUserName(user.getName(),user.getId());
+
+        returnUser.setName("ok");
+        return new ResponseEntity<User>(returnUser,headers,HttpStatus.OK);
+    }
 
 }

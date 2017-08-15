@@ -59,6 +59,12 @@
 
     </update>
 
+    <update id="updateUserNameByUserIdAndName">
+
+        UPDATE t_user SET name = #{name} WHERE id = #{id};
+
+    </update>
+
 
 
 </mapper>
