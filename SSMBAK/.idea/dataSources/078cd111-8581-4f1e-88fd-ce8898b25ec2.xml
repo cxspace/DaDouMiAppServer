@@ -23,44 +23,162 @@
     <schema id="17" parent="1" name="performance_schema"/>
     <schema id="18" parent="1" name="temp"/>
     <schema id="19" parent="1" name="tianxiang"/>
-    <table id="20" parent="2" name="t_user"/>
-    <column id="21" parent="20" name="id">
+    <table id="20" parent="2" name="t_comment"/>
+    <table id="21" parent="2" name="t_share"/>
+    <table id="22" parent="2" name="t_story"/>
+    <table id="23" parent="2" name="t_user"/>
+    <column id="24" parent="20" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="22" parent="20" name="name">
+    <column id="25" parent="20" name="share_id">
+      <Position>2</Position>
+      <Comment>对应的分享的id</Comment>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <column id="26" parent="20" name="user_id">
+      <Position>3</Position>
+      <Comment>发布评论用户的id</Comment>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <column id="27" parent="20" name="create_time">
+      <Position>4</Position>
+      <Comment>发布评论的时间</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="28" parent="20" name="status">
+      <Position>5</Position>
+      <Comment>评论信息状态</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="29" parent="20" name="content">
+      <Position>6</Position>
+      <Comment>评论内容</Comment>
+      <DataType>longtext|0</DataType>
+    </column>
+    <key id="30" parent="20" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="31" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="32" parent="21" name="user_id">
+      <Position>2</Position>
+      <Comment>发布分享用户id</Comment>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <column id="33" parent="21" name="create_time">
+      <Position>3</Position>
+      <Comment>发布的时间</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="34" parent="21" name="imgsrc">
+      <Position>4</Position>
+      <Comment>分享的图片</Comment>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="35" parent="21" name="content">
+      <Position>5</Position>
+      <Comment>分享的文字</Comment>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="36" parent="21" name="support">
+      <Position>6</Position>
+      <Comment>点赞次数</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="37" parent="21" name="status">
+      <Position>7</Position>
+      <Comment>分享信息状态</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="38" parent="21" name="comment_count">
+      <Position>8</Position>
+      <Comment>评论条数</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <key id="39" parent="21" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="22" name="iconsrc">
+      <Position>2</Position>
+      <Comment>icon图片的地址</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="42" parent="22" name="title">
+      <Position>3</Position>
+      <Comment>故事标题</Comment>
+      <DataType>varchar(300)|0</DataType>
+    </column>
+    <column id="43" parent="22" name="create_time">
+      <Position>4</Position>
+      <Comment>创建时间</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="44" parent="22" name="imgsrc">
+      <Position>5</Position>
+      <Comment>标题页图片</Comment>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="45" parent="22" name="content">
+      <Position>6</Position>
+      <Comment>故事内容</Comment>
+      <DataType>longtext|0</DataType>
+    </column>
+    <key id="46" parent="22" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="47" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="23" name="name">
       <Position>2</Position>
       <Comment>姓名</Comment>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="23" parent="20" name="phone">
+    <column id="49" parent="23" name="phone">
       <Position>3</Position>
       <Comment>手机号</Comment>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="24" parent="20" name="email">
+    <column id="50" parent="23" name="email">
       <Position>4</Position>
       <Comment>邮箱</Comment>
       <DataType>varchar(60)|0</DataType>
     </column>
-    <column id="25" parent="20" name="wechat">
+    <column id="51" parent="23" name="status">
       <Position>5</Position>
-      <Comment>微信号</Comment>
-      <DataType>varchar(50)|0</DataType>
+      <Comment>用户状态</Comment>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="26" parent="20" name="password">
+    <column id="52" parent="23" name="password">
       <Position>6</Position>
       <Comment>密码</Comment>
       <DataType>varchar(60)|0</DataType>
     </column>
-    <column id="27" parent="20" name="imgsrc">
+    <column id="53" parent="23" name="imgsrc">
       <Position>7</Position>
       <Comment>头像链接</Comment>
       <DataType>varchar(80)|0</DataType>
     </column>
-    <key id="28" parent="20" name="PRIMARY">
+    <key id="54" parent="23" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

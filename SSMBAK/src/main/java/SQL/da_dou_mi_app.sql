@@ -8,7 +8,7 @@ CREATE TABLE t_user(
 
   email VARCHAR(60) DEFAULT NULL COMMENT '邮箱',
 
-  wechat VARCHAR(50) DEFAULT NULL COMMENT '微信号',
+  status INT COMMENT '用户状态',
 
   password VARCHAR(60) DEFAULT NULL COMMENT '密码',
 
@@ -17,4 +17,23 @@ CREATE TABLE t_user(
   PRIMARY KEY (id)
 
 )DEFAULT CHARSET = utf8;
+
+
+CREATE TABLE t_story(
+
+  id BIGINT NOT NULL AUTO_INCREMENT,
+
+  iconsrc VARCHAR(60) COMMENT 'icon图片的地址',
+
+  title VARCHAR(300) DEFAULT NULL COMMENT '故事标题',
+
+  create_time VARCHAR(60) COMMENT '创建时间',
+
+  imgsrc VARCHAR(80) DEFAULT NULL COMMENT '标题页图片',
+
+  content LONGTEXT COMMENT '故事内容',
+
+  PRIMARY KEY (id)
+
+) DEFAULT CHARSET = utf8;
 

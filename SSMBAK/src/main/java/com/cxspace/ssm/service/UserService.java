@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by liujie on 2017/8/12.
  */
-public interface UserService {
+public interface UserService extends BaseService<User>{
 
     public Integer register(User user);
 

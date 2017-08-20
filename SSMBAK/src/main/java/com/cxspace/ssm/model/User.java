@@ -15,7 +15,7 @@ public class User implements Serializable{
 
     private String email;
 
-    private String wechat;
+    private Integer status;
 
     private String password;
 
@@ -54,12 +54,12 @@ public class User implements Serializable{
         this.email = email;
     }
 
-    public String getWechat() {
-        return wechat;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setWechat(String wechat) {
-        this.wechat = wechat;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getPassword() {
@@ -78,17 +78,18 @@ public class User implements Serializable{
         this.imgsrc = imgsrc;
     }
 
-    public User(String id, String name, String phone, String email, String wechat, String password, String imgsrc) {
+
+    public User() {
+    }
+
+    public User(String id, String name, String phone, String email, Integer status, String password, String imgsrc) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.wechat = wechat;
+        this.status = status;
         this.password = password;
         this.imgsrc = imgsrc;
-    }
-
-    public User() {
     }
 
     @Override
@@ -98,7 +99,7 @@ public class User implements Serializable{
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", wechat='" + wechat + '\'' +
+                ", status=" + status +
                 ", password='" + password + '\'' +
                 ", imgsrc='" + imgsrc + '\'' +
                 '}';

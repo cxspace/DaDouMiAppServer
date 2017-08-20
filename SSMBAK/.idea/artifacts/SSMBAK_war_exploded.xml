@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="SSMBAK:war exploded">
-    <output-path>$PROJECT_DIR$/target/SSM-BAK</output-path>
+    <output-path>$USER_HOME$/Documents/apache-tomcat-8.5.11/webapps/DaDouMiServer</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

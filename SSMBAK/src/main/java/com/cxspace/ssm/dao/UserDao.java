@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by liujie on 2017/8/12.
  */
-public interface UserDao {
+public interface UserDao extends BaseDao<User>{
 
     public Integer save(User user);
 

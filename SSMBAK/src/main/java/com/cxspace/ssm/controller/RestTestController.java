@@ -1,20 +1,16 @@
 package com.cxspace.ssm.controller;
 
 import com.cxspace.ssm.model.User;
-import com.cxspace.ssm.utils.JSONUPUtil;
-import com.sun.tools.internal.ws.processor.util.DirectoryUtil;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +41,6 @@ public class RestTestController {
     {
 
         System.out.println(id);
-
 
         User user = new User();
 
