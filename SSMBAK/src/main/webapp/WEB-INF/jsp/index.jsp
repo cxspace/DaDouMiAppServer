@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head
          content must come *after* these tags -->
-    <title>神奇的Menu</title>
+    <title>大豆米APP后台管理系统</title>
         <!-- Bootstrap -->
 
   <!-- build:css styles/mystyles.css -->
@@ -43,7 +43,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand">
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/sys/index.do">
         <img alt="DaDouMi" style="width: 30px;height: 30px" src="${pageContext.request.contextPath}/asset/images/icon.png">
       </a>
     </div>
@@ -67,17 +67,17 @@
 
         <li><a href="${pageContext.request.contextPath}/sys/story_listUI.do">美食故事管理</a></li>
 
-        <li><a href="share_list.html">圆桌分享管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/sys/share_listUI.do">圆桌分享管理</a></li>
 
-        <li><a href="user_list.html">用户管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/sys/user_listUI.do">用户管理</a></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">账户 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <!--<li><a href="#">账户信息</a></li>-->
-            <li><a href="login.html">注销</a></li>
+            <li><a href="${pageContext.request.contextPath}/">注销</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="register.html">注册新的管理账户</a></li>
+            <%--<li><a href="${pageContext.request.contextPath}/registerUI">注册新的管理账户</a></li>--%>
           </ul>
         </li>
 
@@ -95,7 +95,6 @@
         <!-- Default panel contents -->
         <div class="panel-heading">美食故事管理</div>
         <div class="panel-body">
-            <p>数据无价，谨慎操作！</p>
         </div>
 
         <!-- Table -->
@@ -111,8 +110,8 @@
             <tbody>
 
                <tr>
-                   <td>cxspace</td>
-                   <td>CRUD</td>
+                   <td>dadoumi</td>
+                   <td>CRU</td>
                </tr>
 
             </tbody>

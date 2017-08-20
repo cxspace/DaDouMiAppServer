@@ -45,6 +45,7 @@ public class UserController {
         {
 
             user.setImgsrc("icon.png");
+            user.setStatus(1);
             userService.register(user);
 
         }else {

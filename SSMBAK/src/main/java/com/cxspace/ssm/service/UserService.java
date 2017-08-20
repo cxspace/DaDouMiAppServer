@@ -23,5 +23,8 @@ public interface UserService extends BaseService<User>{
 
     public Integer updateUserName(String name , String id);
 
+    public void prohibitUserById(String id);
+
+    public void activeUserById(String id);
 
 }

@@ -21,6 +21,18 @@ public class ShareServiceImpl implements ShareService{
     @Autowired
     private ShareDao shareDao;
 
+    public void prohibitShareById(String id) {
+        shareDao.prohibitShareById(id);
+    }
+
+    public void activeShareById(String id) {
+        shareDao.activeShareById(id);
+    }
+
+    public List<Share> getAll() {
+        return shareDao.getAll();
+    }
+
     public void inc_support(String id) {
         shareDao.inc_support(id);
     }

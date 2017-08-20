@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,11 +15,11 @@
         <!-- Bootstrap -->
 
   <!-- build:css styles/mystyles.css -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="styles/bootstrap-social.css" rel="stylesheet">
-    <link href="styles/mystyles.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/styles/bootstrap-social.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/styles/mystyles.css" rel="stylesheet">
   <!-- endbuild -->
 
 
@@ -40,9 +44,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">
-        <img alt="DaDouMi" style="width: 30px;height: 30px" src="images/icon.png">
-      </a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/sys/index.do">
+            <img alt="DaDouMi" style="width: 30px;height: 30px" src="${pageContext.request.contextPath}/asset/images/icon.png">
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,19 +64,18 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
 
-        <li><a href="story_list.html">美食故事管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/sys/story_listUI.do">美食故事管理</a></li>
 
-        <li class="active"><a href="share_list.html">圆桌分享管理</a></li>
+        <li class="active"><a href="${pageContext.request.contextPath}/sys/share_listUI.do">圆桌分享管理</a></li>
 
-        <li><a href="user_list.html">用户管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/sys/user_listUI.do">用户管理</a></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">账户 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">账户信息</a></li>
-            <li><a href="#">注销</a></li>
+            <li><a href="${pageContext.request.contextPath}/">注销</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">注册新的管理账户</a></li>
+            <%--<li><a href="${pageContext.request.contextPath}/registerUI">注册新的管理账户</a></li>--%>
           </ul>
         </li>
 
@@ -90,7 +93,6 @@
         <!-- Default panel contents -->
         <div class="panel-heading">美食分享管理</div>
         <div class="panel-body">
-            <p>数据无价，谨慎操作！</p>
         </div>
 
         <!-- Table -->
@@ -99,7 +101,7 @@
             <thead>
 
                <th>ID</th>
-               <th>评论人</th>
+               <th>评论人ID</th>
                <th>创建时间</th>
 
                <th>操作</th>
@@ -108,33 +110,30 @@
 
             <tbody>
 
+
+            <c:forEach items="${commentList}" var="comment">
+
                <tr>
-                   <td>1</td>
-                   <td>爱的备餐</td>
-                   <td>14：50：47</td>
-
-
+                   <td>${comment.id}</td>
+                   <td>${comment.user_id}</td>
+                   <td>${comment.create_time}</td>
 
                    <td>
-                       <a class="btn btn-default btn-sm" href="" role="button">禁用</a>&nbsp;
-
-                       <a class="btn btn-danger btn-sm" href="" role="button">删除</a>
-
+                       <%--<a class="btn btn-default btn-sm" href="" role="button">禁用</a>&nbsp;--%>
                    </td>
                </tr>
-
 
                <tr>
                    <td>评论内容</td>
-                   <td colspan="4">参加男子单打比赛的另一名上海选手张之臻已在上一轮被浙江队吴易昺淘汰，只剩吴迪一人进入1/4决赛。“天气原因、场上压力，还有希望都在我一个人身上，确实会喘不过气来。”吴迪说，“赢得不是很好看，但是全运会的比赛没有办法，只有咬牙坚持住。”
+                   <td colspan="4">
+                       ${comment.content}
                    </td>
                </tr>
 
 
+            </c:forEach>
 
             </tbody>
-
-
 
 
         </table>
@@ -149,7 +148,7 @@
     <div class="row">
 
         <center>
-            <a href="share_list.html" class="btn btn-default btn-lg">返回分享列表</a>
+            <a href="${pageContext.request.contextPath}/sys/share_listUI.do" class="btn btn-default btn-lg">返回分享列表</a>
         </center>
     </div>
 
@@ -160,9 +159,9 @@
 
   <!-- build:js scripts/app.js -->
 
-    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/asset/bower_components/jquery/dist/jquery.min.js"></script>
 
-    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/asset/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
   <!-- endbuild -->
 

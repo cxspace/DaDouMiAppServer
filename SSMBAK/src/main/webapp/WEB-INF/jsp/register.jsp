@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,11 +14,11 @@
         <!-- Bootstrap -->
 
   <!-- build:css styles/mystyles.css -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="styles/bootstrap-social.css" rel="stylesheet">
-    <link href="styles/mystyles.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/styles/bootstrap-social.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/styles/mystyles.css" rel="stylesheet">
   <!-- endbuild -->
 
 
@@ -40,8 +43,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">
-                <img alt="DaDouMi" style="width: 30px;height: 30px" src="images/icon.png">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/sys/index.do">
+                <img alt="DaDouMi" style="width: 30px;height: 30px" src="${pageContext.request.contextPath}/asset/images/icon.png">
             </a>
         </div>
 
@@ -67,7 +70,7 @@
 
     <div class="row">
 
-        <form class="form-horizontal" action="index.html" method="post">
+        <form class="form-horizontal" action="${pageContext.request.contextPath}/" method="post">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-8">
@@ -106,9 +109,9 @@
 
   <!-- build:js scripts/app.js -->
 
-    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/asset/bower_components/jquery/dist/jquery.min.js"></script>
 
-    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/asset/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
   <!-- endbuild -->
 

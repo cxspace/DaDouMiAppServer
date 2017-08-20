@@ -24,4 +24,8 @@ public interface UserDao extends BaseDao<User>{
 
     public Integer updateUserNameByUserIdAndName(@Param("name")String name , @Param("id")String id);
 
+    public void prohibitUserById(String id);
+
+    public void activeUserById(String id);
+
 }

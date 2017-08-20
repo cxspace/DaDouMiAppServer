@@ -58,9 +58,27 @@
 
     <select id="selectAll" resultMap="shareResultMap">
 
+        SELECT * FROM t_share WHERE status = 1;
+
+    </select>
+
+    <select id="getAll" resultMap="shareResultMap">
+
         SELECT * FROM t_share;
 
     </select>
+
+    <update id="prohibitShareById" parameterType="String">
+
+        UPDATE t_share SET status = 0 WHERE id = #{id};
+
+    </update>
+
+    <update id="activeShareById" parameterType="String">
+
+        UPDATE t_share SET status = 1 WHERE id  = #{id};
+
+    </update>
 
     <update id="inc_support">
 

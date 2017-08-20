@@ -43,7 +43,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/sys/index.do">
                 <img alt="DaDouMi" style="width: 30px;height: 30px" src="${pageContext.request.contextPath}/asset/images/icon.png">
             </a>
         </div>
@@ -70,23 +70,26 @@
 
     <div class="row">
 
-        <form class="form-horizontal" action="index.html" method="post">
+        <form class="form-horizontal" action="${pageContext.request.contextPath}/sys/doLogin.do" method="post">
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                <label for="username" class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="name" id="inputEmail3" placeholder="请输入用户名">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="请输入用户名">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                <label for="password" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="请输入密码">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码">
                 </div>
             </div>
+
+
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">登录</button>
+                    <p>${MSG}</p>
                 </div>
             </div>
 

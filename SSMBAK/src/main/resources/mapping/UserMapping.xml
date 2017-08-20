@@ -20,9 +20,27 @@
 
     </resultMap>
 
+    <update id="prohibitUserById" parameterType="String">
+
+        UPDATE t_user SET status = 0 WHERE id = #{id};
+
+    </update>
+
+    <update id="activeUserById" parameterType="String">
+
+        UPDATE t_user SET status = 1 WHERE id = #{id};
+
+    </update>
+
     <select id="select" resultMap="userResultMap">
 
         SELECT * FROM t_user WHERE id = #{id};
+
+    </select>
+
+    <select id="selectAll" resultMap="userResultMap">
+
+        SELECT * FROM t_user;
 
     </select>
 
@@ -43,7 +61,7 @@
 
     <select id="findUserByUserPhoneAndPassword" resultMap="userResultMap">
 
-        SELECT * FROM t_user WHERE phone = #{phone} AND password = #{password};
+        SELECT * FROM t_user WHERE phone = #{phone} AND password = #{password} AND status = 1;
 
     </select>
 

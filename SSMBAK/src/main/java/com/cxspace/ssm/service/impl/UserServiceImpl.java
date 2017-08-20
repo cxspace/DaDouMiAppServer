@@ -22,6 +22,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
+    public void prohibitUserById(String id) {
+        userDao.prohibitUserById(id);
+    }
+
+    public void activeUserById(String id) {
+        userDao.activeUserById(id);
+    }
+
     public Integer register(User user) {
         return userDao.save(user);
     }
@@ -67,7 +75,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> selectAll() {
-        return null;
+        return userDao.selectAll();
     }
 
     public Page<User> selectPage(Page<User> page) {
