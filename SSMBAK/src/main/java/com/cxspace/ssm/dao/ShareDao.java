@@ -22,5 +22,7 @@ public interface ShareDao extends BaseDao<Share> {
 
     public List<Share> getAll();
 
+    public List<Share> getSharesByKeyWord(String keyword);
+
 
 }

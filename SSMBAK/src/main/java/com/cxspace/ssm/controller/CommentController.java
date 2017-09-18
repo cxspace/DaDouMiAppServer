@@ -1,5 +1,4 @@
 package com.cxspace.ssm.controller;
-
 import com.cxspace.ssm.model.Comment;
 import com.cxspace.ssm.model.CommentAndUser;
 import com.cxspace.ssm.model.User;
@@ -26,7 +25,6 @@ import java.util.List;
 
 @RestController
 
-
 public class CommentController {
 
     @Resource
@@ -35,6 +33,17 @@ public class CommentController {
     @Resource
     private UserService userService;
 
+
+    /**
+     * 查询评论列表
+     *
+     *
+     *
+     * @param comment
+     * @param builder
+     * @return
+     * @throws Exception
+     */
 
     @RequestMapping(value = "/comment_select",method = RequestMethod.POST)
     ResponseEntity<List<CommentAndUser>> commentSelect(@RequestBody Comment comment , UriComponentsBuilder builder) throws Exception {
@@ -45,6 +54,8 @@ public class CommentController {
 
         commentList = commentService.selectCommentsByShareId(comment.getShare_id());
 
+        //关联评论和评论相关的用户信息
+
         for (int i = commentList.size() - 1 ; i >= 0 ; i--){
 
             CommentAndUser commentAndUser = new CommentAndUser();
@@ -54,6 +65,7 @@ public class CommentController {
             user = userService.select(user);
 
             commentAndUser.setUser_name(user.getName());
+            commentAndUser.setUser_imgsrc(user.getImgsrc());
             commentAndUser.setComment_id(commentList.get(i).getId());
             commentAndUser.setComment_content(commentList.get(i).getContent());
             commentAndUser.setComment_create_time(commentList.get(i).getCreate_time());
@@ -68,6 +80,15 @@ public class CommentController {
 
         return new ResponseEntity<List<CommentAndUser>>(commentAndUsers,headers,HttpStatus.OK);
     }
+
+
+    /**
+     * 添加评论信息
+     *
+     * @param comment
+     * @param builder
+     * @return
+     */
 
     @RequestMapping(value = "/comment_insert", method = RequestMethod.POST)
     ResponseEntity<Comment> commentInsert(@RequestBody Comment comment , UriComponentsBuilder builder){

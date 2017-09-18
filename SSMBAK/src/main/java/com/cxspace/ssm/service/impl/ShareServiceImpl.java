@@ -88,4 +88,8 @@ public class ShareServiceImpl implements ShareService{
     public Share selectDynamic(@Param("tableName") String table, @Param("items") Share entity) {
         return null;
     }
+
+    public List<Share> getSharesByKeyWord(String keyword) {
+        return shareDao.getSharesByKeyWord(keyword);
+    }
 }

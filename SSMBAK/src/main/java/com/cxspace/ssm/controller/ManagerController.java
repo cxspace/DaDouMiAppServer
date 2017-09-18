@@ -1,5 +1,13 @@
 package com.cxspace.ssm.controller;
 
+/**
+ *
+ *   @detail : 系统管理业务逻辑
+ *   @author : 柳杰
+ *   @time   ：2017／09／15
+ *
+ */
+
 import com.cxspace.ssm.model.Comment;
 import com.cxspace.ssm.model.Share;
 import com.cxspace.ssm.model.Story;
@@ -51,6 +59,12 @@ public class ManagerController {
         return "index";
     }
 
+    /**
+     * 禁用用户
+     * @param request 传入用户的id号
+     * @return
+     */
+
     @RequestMapping("/prohibit_user")
     public String prohibitUser(HttpServletRequest request)
     {
@@ -60,6 +74,13 @@ public class ManagerController {
 
         return "redirect:/sys/user_listUI.do";
     }
+
+    /**
+     * 激活用户
+     *
+     * @param request 传入用户的id号
+     * @return
+     */
 
     @RequestMapping("/active_user")
     public String activeUser(HttpServletRequest request)
@@ -72,6 +93,14 @@ public class ManagerController {
     }
 
 
+    /**
+     *
+     * 禁用分享
+     *
+     * @param request    分享的id
+     * @return
+     */
+
     @RequestMapping("/prohibit_share")
     public String prohibitShare(HttpServletRequest request)
     {
@@ -81,6 +110,14 @@ public class ManagerController {
 
         return "redirect:/sys/share_listUI.do";
     }
+
+    /**
+     *
+     * 激活分享
+     *
+     * @param request 分享的id
+     * @return
+     */
 
     @RequestMapping("/active_share")
     public String activeShare(HttpServletRequest request)
@@ -92,6 +129,8 @@ public class ManagerController {
         return "redirect:/sys/share_listUI.do";
     }
 
+
+
     @RequestMapping("/loginUI")
     public String loginUI()
     {
@@ -102,6 +141,14 @@ public class ManagerController {
     public String registerUI(){
         return "register";
     }
+
+    /**
+     * 管理员登录逻辑
+     *
+     * @param request 账户名和密码
+     * @param model  登录状态
+     * @return
+     */
 
     @RequestMapping("/doLogin")
     public String doLogin(HttpServletRequest request,Model model)
@@ -124,6 +171,15 @@ public class ManagerController {
 
     }
 
+    /**
+     *
+     * 返回分享的评论列表
+     *
+     * @param request  分享的id
+     * @param model   评论列表
+     * @return
+     */
+
     @RequestMapping("/share_comment_listUI")
     public String share_comment_listUI(HttpServletRequest request,Model model){
 
@@ -136,6 +192,14 @@ public class ManagerController {
         return "share_comment_list";
     }
 
+    /**
+     *
+     * 分享的列表
+     *
+     * @param model
+     * @return
+     */
+
     @RequestMapping("/share_listUI")
     public String share_listUI(Model model){
 
@@ -145,6 +209,14 @@ public class ManagerController {
 
         return "share_list";
     }
+
+    /**
+     *
+     * 拿到用户列表
+     *
+     * @param model
+     * @return
+     */
 
     @RequestMapping("/user_listUI")
     public String user_listUI(Model model){
@@ -157,6 +229,13 @@ public class ManagerController {
     }
 
 
+    /**
+     * 拿到故事列表
+     *
+     * @param model
+     * @return
+     */
+
     @RequestMapping("/story_listUI")
     public String story_listUI(Model model)
     {
@@ -167,12 +246,28 @@ public class ManagerController {
         return "story_list";
     }
 
+    /**
+     *
+     * 添加故事
+     *
+     * @return
+     */
+
     @RequestMapping("/story_addUI")
     public String story_addUI()
     {
 
         return "story_add";
     }
+
+    /**
+     *
+     *
+     * @param request
+     * @param model
+     * @return
+     * @throws Exception
+     */
 
     @RequestMapping("/story_editUI")
     public String story_editUI(HttpServletRequest request , Model model) throws Exception {
@@ -187,6 +282,14 @@ public class ManagerController {
         return "story_edit";
     }
 
+    /**
+     * 编辑故事
+     * @param story
+     * @param model
+     * @return
+     * @throws Exception
+     */
+
     @RequestMapping("/story_edit")
     public String stroy_edit(Story story, Model model) throws Exception{
 
@@ -195,6 +298,13 @@ public class ManagerController {
         return "redirect:/sys/story_listUI.do";
 
     }
+
+    /**
+     * 删除故事
+     * @param request
+     * @return
+     * @throws Exception
+     */
 
     @RequestMapping("/story_delete")
     public String story_delete(HttpServletRequest request) throws Exception{
@@ -227,7 +337,6 @@ public class ManagerController {
 
         String fileName = FileUploadHelper.uploadImg(file,request);
 
-
         story.setTitle(title);
         story.setIconsrc("http://121.42.184.102/DaDouMiImg/icon.png");
         story.setContent(content);
@@ -244,8 +353,7 @@ public class ManagerController {
     }
 
 
-
-
-
-
 }
+
+
+

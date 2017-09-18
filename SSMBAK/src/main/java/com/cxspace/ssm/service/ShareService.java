@@ -18,5 +18,7 @@ public interface ShareService extends BaseService<Share> {
 
     public List<Share> getAll();
 
+    public List<Share> getSharesByKeyWord(String keyword);
+
 
 }

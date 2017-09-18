@@ -16,8 +16,6 @@ import java.util.List;
  */
 
 @RestController
-
-
 public class UserController {
 
     @Resource
@@ -26,7 +24,7 @@ public class UserController {
     /**
      * 用户注册逻辑
      *
-     * @param user
+     * @param user  用户注册信息
      * @param ucBuilder
      * @return
      */
@@ -34,7 +32,7 @@ public class UserController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ResponseEntity<User> registerUser(@RequestBody User user, UriComponentsBuilder ucBuilder){
 
-        System.out.println("注册用户信息手机号:"+user.getPhone() +"\n 密码："+ user.getPassword());
+//        System.out.println("注册用户信息手机号:"+user.getPhone() +"\n 密码："+ user.getPassword());
 
         HttpHeaders headers = new HttpHeaders();
         //允许跨域请求
@@ -88,7 +86,6 @@ public class UserController {
         //允许跨域请求
         headers.setAccessControlAllowOrigin("*");
 
-
         return new ResponseEntity<User>(returnUser,headers,HttpStatus.OK);
     }
 
@@ -120,6 +117,16 @@ public class UserController {
         return new ResponseEntity<User>(returnUser,headers,HttpStatus.OK);
     }
 
+
+    /**
+     *
+     * 修改用户邮箱设置
+     *
+     * @param user
+     * @param builder
+     * @return
+     */
+
     @RequestMapping(value = "/update_email",method = RequestMethod.POST)
     public ResponseEntity<User> updateEmail(@RequestBody User user , UriComponentsBuilder builder)
     {
@@ -138,6 +145,13 @@ public class UserController {
 
     }
 
+    /**
+     * 修改密码
+     * @param user
+     * @param builder
+     * @return
+     */
+
     @RequestMapping(value = "/update_password",method = RequestMethod.POST)
     public ResponseEntity<User> updatePassword(@RequestBody User user , UriComponentsBuilder builder)
     {
@@ -155,6 +169,13 @@ public class UserController {
 
     }
 
+    /**
+     * 修改头像：通过重定位头像地址
+     * @param user
+     * @param builder
+     * @return
+     */
+
     @RequestMapping(value = "/update_imgsrc",method = RequestMethod.POST)
     public ResponseEntity<User> updateImgsrc(@RequestBody User user , UriComponentsBuilder builder)
     {
@@ -171,6 +192,13 @@ public class UserController {
         return new ResponseEntity<User>(returnUser,headers,HttpStatus.OK);
 
     }
+
+    /**
+     * 修改用户名
+     * @param user
+     * @param builder
+     * @return
+     */
 
     @RequestMapping(value = "/update_name",method = RequestMethod.POST)
     public ResponseEntity<User> updateName(@RequestBody User user , UriComponentsBuilder builder)

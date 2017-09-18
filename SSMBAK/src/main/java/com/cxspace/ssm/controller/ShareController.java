@@ -1,5 +1,6 @@
 package com.cxspace.ssm.controller;
 
+import com.cxspace.ssm.model.Search;
 import com.cxspace.ssm.model.Share;
 import com.cxspace.ssm.model.ShareAndUser;
 import com.cxspace.ssm.model.User;
@@ -35,6 +36,15 @@ public class ShareController {
     @Resource
     private CommentService commentService;
 
+    /**
+     *
+     * 点赞数添加
+     *
+     * @param share
+     * @param builder
+     * @return
+     */
+
     @RequestMapping(value = "/inc_support",method = RequestMethod.POST)
     public ResponseEntity<Share> inc_support(@RequestBody Share share , UriComponentsBuilder builder){
 
@@ -48,6 +58,58 @@ public class ShareController {
 
         return new ResponseEntity<Share>(returnShare,headers,HttpStatus.OK);
     }
+
+
+    @RequestMapping(value = "/share_search",method = RequestMethod.POST)
+    public ResponseEntity<List<ShareAndUser>> shareSelect(@RequestBody Search search, UriComponentsBuilder builder) throws Exception {
+
+        List<ShareAndUser> shareAndUsers = new ArrayList<ShareAndUser>();
+
+        System.out.println("**************"+search.getKeyword()+"**************");
+
+        List<Share> shareList = new ArrayList<Share>();
+
+        shareList = shareService.getSharesByKeyWord("%"+search.getKeyword()+"%");
+
+        for (int i = shareList.size() - 1  ; i >= 0  ; i--){
+
+            User user = new User();
+
+            //查到发布该分享的用户
+            user = userService.select(new User(shareList.get(i).getUser_id(),"","","",1,"",""));
+
+            ShareAndUser shareAndUser = new ShareAndUser();
+
+            shareAndUser.setUser_name(user.getName());
+            shareAndUser.setUser_imgsrc(user.getImgsrc());
+            shareAndUser.setShare_time(shareList.get(i).getCreate_time());
+            shareAndUser.setShare_imgsrc(shareList.get(i).getImgsrc());
+            shareAndUser.setShare_content(shareList.get(i).getContent());
+            shareAndUser.setShare_suport(shareList.get(i).getSupport());
+            shareAndUser.setShare_comment_count(commentService.selectCommentsCountByShareId(shareList.get(i).getId()));
+            shareAndUser.setShare_id(shareList.get(i).getId());
+
+            shareAndUsers.add(shareAndUser);
+
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        //允许跨域请求
+        headers.setAccessControlAllowOrigin("*");
+
+        return new ResponseEntity<List<ShareAndUser>>(shareAndUsers,headers,HttpStatus.OK);
+
+    }
+
+
+
+    /**
+     * 插入分享
+     *
+     * @param share
+     * @param builder
+     * @return
+     */
 
     @RequestMapping(value = "/share_insert",method = RequestMethod.POST)
     public ResponseEntity<Share> shareInsert(@RequestBody Share share, UriComponentsBuilder builder) {
@@ -76,6 +138,14 @@ public class ShareController {
 
         return new ResponseEntity<Share>(returnShare,headers, HttpStatus.OK);
     }
+
+    /**
+     *
+     * 分享列表
+     *
+     * @return
+     * @throws Exception
+     */
 
     @RequestMapping(value = "/round_table",method = RequestMethod.GET)
     public ResponseEntity<List<ShareAndUser>> round_table() throws Exception {
@@ -110,6 +180,14 @@ public class ShareController {
     }
 
 
+    /**
+     *
+     * 分享具体内容
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
 
     @RequestMapping(value = "/shares/{id}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Share> getStory(@PathVariable("id") String id) throws Exception
